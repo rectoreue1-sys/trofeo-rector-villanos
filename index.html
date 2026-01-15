@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enfermería Huesca - Trofeo Rectora</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Estilos dinámicos por deporte */
+        .sport-f11 { border-left: 4px solid #3b82f6; }
+        .sport-fsm { border-left: 4px solid #10b981; }
+        .sport-fsf { border-left: 4px solid #ec4899; }
+        .sport-vf { border-left: 4px solid #8b5cf6; }
+        
+        .badge-f11 { background-color: #dbeafe; color: #1e40af; }
+        .badge-fsm { background-color: #d1fae5; color: #065f46; }
+        .badge-fsf { background-color: #fce7f3; color: #9d174d; }
+        .badge-vf { background-color: #ede9fe; color: #5b21b6; }
+
+        /* Estilos Calendario */
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+        .calendar-day { min-height: 80px; transition: all 0.2s; }
+        .calendar-day:hover { background-color: #f1f5f9; }
+        .calendar-day.today { background-color: #eff6ff; border: 1px solid #3b82f6; }
+        .day-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin: 1px; }
+    </style>
+</head>
+<body class="pb-24 md:pb-0">
+
+    <!-- NAVIGATION -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-gray-200 px-4 py-3 shadow-sm">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 p-1.5 rounded-lg text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v10"/><path d="M16 2v10"/><path d="M12 12a4 4 0 0 0 4 4h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1a6 6 0 0 1-6-6"/><path d="M12 12a4 4 0 0 1-4 4H7a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1a6 6 0 0 0 6-6"/><path d="M8 2v10"/></svg>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-blue-900 leading-tight">Enfermería Huesca</h1>
+                    <p class="text-xs text-blue-600 font-medium">Trofeo Rectora Unizar</p>
+                </div>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                <button onclick="showSection('inicio')" class="hover:text-blue-600 transition">Inicio</button>
+                <button onclick="showSection('vista-mensual')" class="hover:text-blue-600 transition">Mes a Mes</button>
+                <button onclick="showSection('calendario')" class="hover:text-blue-600 transition">Agenda</button>
+                <button onclick="showSection('equipos')" class="hover:text-blue-600 transition">Equipos</button>
+                <button onclick="showSection('mapa')" class="hover:text-blue-600 transition">Instalaciones</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-container" class="max-w-6xl mx-auto p-4 md:p-6">
+        
+        <!-- SECTION: INICIO / DASHBOARD -->
+        <section id="inicio" class="section-content">
+            <div class="mb-8">
+                <h2 class="text-3xl font-extrabold text-blue-900 tracking-tight">¡Hola, Vacunadores! 👋</h2>
+                <p class="text-gray-500 mt-1 font-medium">Consulta aquí toda la actividad del Trofeo Rectora.</p>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <a href="https://www.instagram.com/vacunadoresdelgol?igsh=MXhicmYwcnNsZjZkeg==" target="_blank" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center space-x-2 hover:shadow-md transition group">
+                    <span class="text-pink-600 group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </span>
+                    <span class="font-bold text-gray-800">Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/@vacunadores.gol?_r=1&_t=ZN-926btqjV21u" target="_blank" class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-center space-x-2 hover:shadow-md transition group">
+                    <span class="text-black group-hover:scale-110 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </span>
+                    <span class="font-bold text-gray-800">TikTok</span>
+                </a>
+            </div>
+
+            <!-- Resumen Rápido -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-bold text-xl text-gray-800 flex items-center">
+                    <span class="mr-2">📅</span> Agenda próxima
+                </h3>
+                <button onclick="showSection('vista-mensual')" class="text-blue-600 text-sm font-bold hover:underline">Vista mensual</button>
+            </div>
+            <div id="weekly-overview" class="space-y-3">
+                <!-- JS Fill -->
+            </div>
+        </section>
+
+        <!-- SECTION: VISTA MENSUAL (CALENDARIO TIPO REJILLA) -->
+        <section id="vista-mensual" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 overflow-hidden">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 id="current-month-display" class="text-2xl font-bold text-gray-800">Enero 2026</h2>
+                    <div class="flex space-x-2">
+                        <button onclick="changeMonth(-1)" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+                        <button onclick="changeMonth(1)" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cabecera Días -->
+                <div class="grid grid-cols-7 mb-2 border-b border-gray-100">
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Lun</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Mar</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Mié</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Jue</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Vie</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Sáb</div>
+                    <div class="text-center py-2 text-xs font-bold text-gray-400 uppercase">Dom</div>
+                </div>
+
+                <!-- Rejilla Días -->
+                <div id="calendar-body" class="calendar-grid">
+                    <!-- Dinámico -->
+                </div>
+
+                <!-- Leyenda -->
+                <div class="mt-6 pt-6 border-t border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <div class="flex items-center text-[10px] font-semibold text-gray-500">
+                        <span class="day-dot bg-blue-500 mr-2"></span> Fútbol 11
+                    </div>
+                    <div class="flex items-center text-[10px] font-semibold text-gray-500">
+                        <span class="day-dot bg-emerald-500 mr-2"></span> F-Sala Masc
+                    </div>
+                    <div class="flex items-center text-[10px] font-semibold text-gray-500">
+                        <span class="day-dot bg-pink-500 mr-2"></span> F-Sala Fem
+                    </div>
+                    <div class="flex items-center text-[10px] font-semibold text-gray-500">
+                        <span class="day-dot bg-violet-500 mr-2"></span> Voley Fem
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CALENDARIO LISTA (AGENDA) -->
+        <section id="calendario" class="section-content hidden">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Listado de Partidos</h2>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterMatches('todos')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-gray-800 text-white" data-sport="todos">Todos</button>
+                        <button onclick="filterMatches('Fútbol 11')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-blue-50 text-blue-600 border border-blue-200" data-sport="Fútbol 11">Fútbol 11</button>
+                        <button onclick="filterMatches('Fútbol Sala Masculino')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-600 border border-emerald-200" data-sport="Fútbol Sala Masculino">F-Sala Masc</button>
+                        <button onclick="filterMatches('Fútbol Sala Femenino')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-pink-50 text-pink-600 border border-pink-200" data-sport="Fútbol Sala Femenino">F-Sala Fem</button>
+                        <button onclick="filterMatches('Voley Femenino')" class="filter-btn px-4 py-1.5 rounded-full text-xs font-bold bg-violet-50 text-violet-600 border border-violet-200" data-sport="Voley Femenino">Voley</button>
+                    </div>
+                </div>
+
+                <div class="relative mb-6">
+                    <input type="text" id="match-search" onkeyup="searchMatches()" placeholder="Buscar por rival o instalación..." class="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    <div class="absolute left-3 top-3.5 text-gray-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </div>
+                </div>
+
+                <div id="matches-list" class="space-y-4">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: EQUIPOS -->
+        <section id="equipos" class="section-content hidden">
+            <div class="flex overflow-x-auto space-x-2 pb-4 mb-6 no-scrollbar">
+                <button onclick="showSquad('f11m')" class="squad-tab flex-none px-6 py-2 rounded-xl font-bold transition-all bg-blue-600 text-white shadow-md border border-blue-600" data-key="f11m">Fútbol 11 Masc</button>
+                <button onclick="showSquad('fsm')" class="squad-tab flex-none px-6 py-2 rounded-xl font-bold transition-all bg-white text-gray-600 border border-gray-200" data-key="fsm">F-Sala Masc</button>
+                <button onclick="showSquad('fsf')" class="squad-tab flex-none px-6 py-2 rounded-xl font-bold transition-all bg-white text-gray-600 border border-gray-200" data-key="fsf">F-Sala Fem</button>
+                <button onclick="showSquad('vf')" class="squad-tab flex-none px-6 py-2 rounded-xl font-bold transition-all bg-white text-gray-600 border border-gray-200" data-key="vf">Voley Fem</button>
+            </div>
+            <div id="squad-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Dinámico -->
+            </div>
+        </section>
+
+        <!-- SECTION: MAPA -->
+        <section id="mapa" class="section-content hidden">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800">Ubicación de Instalaciones</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-2xl shadow-sm p-4 border sport-f11">
+                    <h3 class="font-bold text-lg mb-2 text-blue-800">Campo de Fútbol Universidad</h3>
+                    <div class="aspect-video bg-blue-50 rounded-xl overflow-hidden mb-4 relative flex items-center justify-center border border-blue-100 text-center p-4">
+                        <div>
+                            <span class="text-4xl block mb-2">📍</span>
+                            <p class="text-blue-600 font-medium text-sm">C. de la Universidad, Huesca</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl shadow-sm p-4 border border-l-4 border-l-emerald-500">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-800">Pabellón Río Isuela</h3>
+                    <div class="aspect-video bg-emerald-50 rounded-xl overflow-hidden mb-4 relative flex items-center justify-center border border-emerald-100 text-center p-4">
+                        <div>
+                            <span class="text-4xl block mb-2">📍</span>
+                            <p class="text-emerald-600 font-medium text-sm">Av. de la Paz, Huesca</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- BOTTOM MOBILE MENU -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden flex justify-around items-center py-3 z-50 px-2 shadow-lg">
+        <button onclick="showSection('inicio')" class="flex flex-col items-center text-blue-600 nav-mobile-btn" data-target="inicio">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span class="text-[10px] font-bold mt-1 uppercase tracking-tighter">Inicio</span>
+        </button>
+        <button onclick="showSection('vista-mensual')" class="flex flex-col items-center text-gray-400 nav-mobile-btn" data-target="vista-mensual">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+            <span class="text-[10px] font-bold mt-1 uppercase tracking-tighter">Mensual</span>
+        </button>
+        <button onclick="showSection('calendario')" class="flex flex-col items-center text-gray-400 nav-mobile-btn" data-target="calendario">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+            <span class="text-[10px] font-bold mt-1 uppercase tracking-tighter">Agenda</span>
+        </button>
+        <button onclick="showSection('equipos')" class="flex flex-col items-center text-gray-400 nav-mobile-btn" data-target="equipos">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span class="text-[10px] font-bold mt-1 uppercase tracking-tighter">Equipos</span>
+        </button>
+    </div>
+
+    <script>
+        // CONFIG
+        const sportConfig = {
+            "Fútbol 11": { class: "sport-f11", badge: "badge-f11", hex: "#3b82f6", bg: "bg-blue-600" },
+            "Fútbol Sala Masculino": { class: "sport-fsm", badge: "badge-fsm", hex: "#10b981", bg: "bg-emerald-600" },
+            "Fútbol Sala Femenino": { class: "sport-fsf", badge: "badge-fsf", hex: "#ec4899", bg: "bg-pink-600" },
+            "Voley Femenino": { class: "sport-vf", badge: "badge-vf", hex: "#8b5cf6", bg: "bg-violet-600" }
+        };
+
+        const matches = [
+            { id: 1, date: "2026-01-20", time: "18:00", sport: "Fútbol Sala Masculino", rival: "Politécnica", place: "Pabellón Río Isuela", month: "ENERO" },
+            { id: 2, date: "2026-01-27", time: "19:15", sport: "Voley Femenino", rival: "Politécnica", place: "Pabellón Río Isuela", month: "ENERO" },
+            { id: 3, date: "2026-01-28", time: "19:00", sport: "Fútbol Sala Femenino", rival: "CCAFD", place: "Pabellón Río Isuela", month: "ENERO" },
+            { id: 4, date: "2026-02-03", time: "14:00", sport: "Fútbol 11", rival: "CMU Ramón Acín", place: "Campo de fútbol", month: "FEBRERO" },
+            { id: 5, date: "2026-02-05", time: "19:00", sport: "Voley Femenino", rival: "Odontología", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 6, date: "2026-02-09", time: "15:00", sport: "Fútbol Sala Masculino", rival: "CMU Ramón Acín", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 7, date: "2026-02-10", time: "14:00", sport: "Fútbol 11", rival: "Magisterio", place: "Campo de fútbol", month: "FEBRERO" },
+            { id: 8, date: "2026-02-17", time: "14:00", sport: "Fútbol 11", rival: "Politécnica", place: "Campo de fútbol", month: "FEBRERO" },
+            { id: 9, date: "2026-02-17", time: "15:00", sport: "Fútbol Sala Femenino", rival: "CMU Ramón Acín", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 10, date: "2026-02-18", time: "18:00", sport: "Fútbol Sala Masculino", rival: "CCAFD", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 11, date: "2026-02-19", time: "17:30", sport: "Voley Femenino", rival: "CMU Ramón Acín", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 12, date: "2026-02-25", time: "18:00", sport: "Fútbol Sala Femenino", rival: "Odontología", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 13, date: "2026-02-26", time: "17:30", sport: "Voley Femenino", rival: "Medicina", place: "Pabellón Río Isuela", month: "FEBRERO" },
+            { id: 14, date: "2026-03-03", time: "14:00", sport: "Fútbol 11", rival: "ADE", place: "Campo de fútbol", month: "MARZO" },
+            { id: 15, date: "2026-03-03", time: "18:00", sport: "Fútbol Sala Masculino", rival: "Nutrición", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 16, date: "2026-03-05", time: "19:00", sport: "Voley Femenino", rival: "CCAFD", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 17, date: "2026-03-10", time: "18:00", sport: "Fútbol Sala Femenino", rival: "Magisterio", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 18, date: "2026-03-12", time: "19:00", sport: "Voley Femenino", rival: "Magisterio", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 19, date: "2026-03-17", time: "14:00", sport: "Fútbol 11", rival: "CCAFD", place: "Campo de fútbol", month: "MARZO" },
+            { id: 20, date: "2026-03-18", time: "19:00", sport: "Fútbol Sala Masculino", rival: "Odontología", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 21, date: "2026-03-25", time: "19:00", sport: "Fútbol Sala Femenino", rival: "Politécnica", place: "Pabellón Río Isuela", month: "MARZO" },
+            { id: 22, date: "2026-04-08", time: "19:00", sport: "Fútbol Sala Masculino", rival: "Magisterio", place: "Pabellón Río Isuela", month: "ABRIL" }
+        ];
+
+        // SQUADS
+        const squads = {
+            f11m: { title: "Fútbol 11 Masculino", sport: "Fútbol 11", players: ["Carlos Abad", "Antonio González", "Mario Villegas", "Arturo Vicente", "Alejandro Ruiz", "Samuel Gómez", "Marcos Villalba", "Álvaro Maluenda", "Axel Koné", "Sergio Val", "Martín Marín", "Adrián Torralba", "Lorenzo Aso", "Mario Torralba", "Julián Crespo", "Nolan Padilla", "Daniel Álvarez", "Miguel Solano", "Jorge Navarrete", "Hugo Escudero"] },
+            fsm: { title: "Fútbol Sala Masculino", sport: "Fútbol Sala Masculino", players: ["Arturo Vicente Ramón", "Antonio González Perandones", "Julián Crespo Sarvisé", "Jorge Navarrete Martinez", "Alejandro Ruiz Meavilla", "Mario Torralba Grúas", "Samuel Gómez Polo", "Marcos Villalba Embid", "Álvaro Maluenda Pozo", "Sergio Val García", "Mario Villegas Novales"] },
+            fsf: { title: "Fútbol Sala Femenino", sport: "Fútbol Sala Femenino", players: ["Paula Mediano Martínez", "Carolina Aparicio Fullola", "Ane Etxeberria Astigarraga", "Lorena García Javierre", "Aina Morales Balderas", "Alba Castro Sanz", "Andrea Arpal Obón", "Daniela Mariana Pérez Sanz", "Claudia Mata Gimeno", "Miriam Herrera Ramirez", "Izarbe Ripoll Martínez", "Ángela García Rech"] },
+            vf: { title: "Voley Femenino", sport: "Voley Femenino", players: ["Lucía Vázquez Buey", "Lucía Martín Arroyos", "Mar Rubio Soria", "Eva López Varas", "Ángela García Rech", "Lucía Puyó Iguaz", "Alba Marín Ester", "Raquel Aguado Salas", "Ana Belén Pinasco Murillo", "Vanessa Royo Lainez", "Belén Sarasa Rived", "Lidia Gracia de Mur"] }
+        };
+
+        // CALENDAR LOGIC
+        let currentYear = 2026;
+        let currentMonth = 0; // 0 = Enero
+
+        const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section-content').forEach(s => s.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            document.querySelectorAll('.nav-mobile-btn').forEach(btn => {
+                btn.classList.toggle('text-blue-600', btn.dataset.target === sectionId);
+                btn.classList.toggle('text-gray-400', btn.dataset.target !== sectionId);
+            });
+
+            if(sectionId === 'vista-mensual') renderCalendar();
+            window.scrollTo(0, 0);
+        }
+
+        function renderCalendar() {
+            const body = document.getElementById('calendar-body');
+            const display = document.getElementById('current-month-display');
+            body.innerHTML = '';
+            display.innerText = `${monthNames[currentMonth]} ${currentYear}`;
+
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            // Offset de días (ajustar para que Lunes sea el primer día - JS 0 es Domingo)
+            let startOffset = firstDay === 0 ? 6 : firstDay - 1;
+
+            // Días vacíos iniciales
+            for (let i = 0; i < startOffset; i++) {
+                body.innerHTML += `<div class="p-2 border border-gray-50 bg-gray-50/30"></div>`;
+            }
+
+            // Días del mes
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayMatches = matches.filter(m => m.date === dateStr);
+                
+                const dayEl = document.createElement('div');
+                dayEl.className = `calendar-day p-2 border border-gray-50 flex flex-col items-center justify-start relative cursor-pointer`;
+                
+                // Marcar hoy si corresponde
+                const today = new Date();
+                if(today.getFullYear() === currentYear && today.getMonth() === currentMonth && today.getDate() === day) {
+                    dayEl.classList.add('today');
+                }
+
+                dayEl.innerHTML = `<span class="text-sm font-bold ${dayMatches.length > 0 ? 'text-blue-600' : 'text-gray-600'}">${day}</span>`;
+                
+                const dotsContainer = document.createElement('div');
+                dotsContainer.className = "mt-1 flex flex-wrap justify-center";
+                
+                dayMatches.forEach(m => {
+                    const dot = document.createElement('span');
+                    dot.className = "day-dot";
+                    dot.style.backgroundColor = sportConfig[m.sport].hex;
+                    dotsContainer.appendChild(dot);
+                });
+
+                dayEl.appendChild(dotsContainer);
+                
+                if(dayMatches.length > 0) {
+                    dayEl.onclick = () => {
+                        showSection('calendario');
+                        document.getElementById('match-search').value = dateStr;
+                        renderMatches('todos', dateStr);
+                    };
+                }
+
+                body.appendChild(dayEl);
+            }
+        }
+
+        function changeMonth(dir) {
+            currentMonth += dir;
+            if(currentMonth > 3) currentMonth = 0; // Limitamos a Abril para este demo
+            if(currentMonth < 0) currentMonth = 3;
+            renderCalendar();
+        }
+
+        // OTHER RENDERERS
+        function renderMatches(filter = 'todos', query = '') {
+            const list = document.getElementById('matches-list');
+            list.innerHTML = '';
+            const filtered = matches.filter(m => {
+                const matchesSport = filter === 'todos' || m.sport === filter;
+                const matchesSearch = m.rival.toLowerCase().includes(query.toLowerCase()) || 
+                                    m.place.toLowerCase().includes(query.toLowerCase()) || 
+                                    m.date.includes(query);
+                return matchesSport && matchesSearch;
+            });
+
+            if(filtered.length === 0) {
+                list.innerHTML = '<p class="text-center py-10 text-gray-500 italic">No hay partidos.</p>';
+                return;
+            }
+
+            filtered.forEach(m => {
+                const config = sportConfig[m.sport];
+                list.innerHTML += `
+                    <div class="p-4 bg-white border rounded-xl flex items-center justify-between hover:shadow-md transition ${config.class}">
+                        <div class="flex-1">
+                            <div class="flex items-center space-x-2 mb-1">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded uppercase ${config.badge}">${m.sport}</span>
+                            </div>
+                            <h4 class="font-bold text-gray-900">vs ${m.rival}</h4>
+                            <div class="flex items-center text-xs text-gray-500 mt-1">
+                                <span class="mr-3">⏰ ${m.time}</span>
+                                <span>📍 ${m.place}</span>
+                            </div>
+                        </div>
+                        <div class="text-[10px] font-bold text-gray-400 text-right">${m.date}</div>
+                    </div>
+                `;
+            });
+        }
+
+        function filterMatches(sport) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('ring-2', b.dataset.sport === sport));
+            renderMatches(sport);
+        }
+
+        function searchMatches() {
+            renderMatches('todos', document.getElementById('match-search').value);
+        }
+
+        function showSquad(key) {
+            const data = squads[key];
+            const config = sportConfig[data.sport];
+            document.querySelectorAll('.squad-tab').forEach(t => {
+                t.className = `squad-tab flex-none px-6 py-2 rounded-xl font-bold transition-all ${t.dataset.key === key ? config.bg + ' text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200'}`;
+            });
+
+            const container = document.getElementById('squad-container');
+            container.innerHTML = `<div class="col-span-full p-6 rounded-2xl border-2 bg-white flex items-center space-x-4" style="border-color: ${config.hex}">
+                <div class="p-3 rounded-full text-white" style="background-color: ${config.hex}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <div><h3 class="text-xl font-extrabold text-gray-800 uppercase">${data.title}</h3><p class="text-xs font-bold uppercase" style="color: ${config.hex}">Plantilla Oficial</p></div>
+            </div>`;
+
+            data.players.forEach((p, i) => {
+                container.innerHTML += `<div class="bg-white p-4 rounded-xl border border-gray-100 flex items-center space-x-3"><div class="w-8 h-8 rounded-lg flex items-center justify-center font-bold text-xs" style="background-color: ${config.hex}20; color: ${config.hex}">${i+1}</div><p class="font-semibold text-gray-800 text-sm">${p}</p></div>`;
+            });
+        }
+
+        function setupDashboard() {
+            const weekly = document.getElementById('weekly-overview');
+            matches.slice(0, 4).forEach(m => {
+                const conf = sportConfig[m.sport];
+                weekly.innerHTML += `<div class="bg-white p-4 rounded-2xl border-l-4 flex items-center justify-between shadow-sm" style="border-left-color: ${conf.hex}">
+                    <div class="flex items-center space-x-4">
+                        <div class="text-center p-2 rounded-xl min-w-[50px]" style="background-color: ${conf.hex}15">
+                            <p class="text-[10px] font-bold uppercase" style="color: ${conf.hex}">${m.month.substring(0,3)}</p>
+                            <p class="text-lg font-bold text-gray-800 leading-none">${m.date.split('-')[2]}</p>
+                        </div>
+                        <div><p class="font-bold text-sm text-gray-800">${m.sport}</p><p class="text-xs text-gray-500">vs ${m.rival}</p></div>
+                    </div>
+                    <span class="text-xs font-bold text-gray-400">${m.time}</span>
+                </div>`;
+            });
+        }
+
+        window.onload = () => {
+            setupDashboard();
+            renderMatches();
+            showSquad('f11m');
+        };
+    </script>
+</body>
+</html>
